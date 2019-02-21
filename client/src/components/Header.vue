@@ -14,12 +14,12 @@
 
   <v-spacer></v-spacer>
 
-  <v-toolbar-items>
-    <v-btn flat dark :to="{name: 'register'}">
+  <v-toolbar-items >
+    <v-btn v-if="!$store.state.isUserLoggedIn" flat dark :to="{name: 'register'}">
       SignUp
     </v-btn>
 
-    <v-btn flat dark :to="{name: 'login'}">
+    <v-btn v-if="!$store.state.isUserLoggedIn" flat dark :to="{name: 'login'}">
       Login
     </v-btn>
   </v-toolbar-items>
