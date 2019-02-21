@@ -16,13 +16,8 @@ module.exports = {
     async register(req, res) {
         try {
             const user = await User.create(req.body);
-
-            console.log(user)
-
             res.status(200).send(user.toJSON());
         } catch (err) {
-            console.log(err);
-            
             res.status(400).send({
                 error: "This email account is already in use",
             });
@@ -47,20 +42,22 @@ module.exports = {
                 })
             }
 
-            const isPasswordValid = await user.comparePassword(password);
-            if (!isPasswordValid) {
+            const isPasswordValid = password === user.password;
+
+            const userJson = user.toJSON()
+
+            if(isPasswordValid){
+                return res.send({
+                    user: userJson,
+                    token: jwtSignUser(userJson)
+                })
+            } else {
                 return res.status(403).send({
                     error: 'The login information was incorrect'
                 })
             }
-
-            const userJson = user.toJSON()
-
-            res.send({
-                user: userJson,
-                token: jwtSignUser(userJson)
-            })
-        } catch (err) {
+        } 
+        catch (err) {
             res.status(500).send({
                 error: 'An error has occured trying to log in'
             })
