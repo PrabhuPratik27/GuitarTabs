@@ -12,11 +12,12 @@ const files = fs
 files.forEach((file) => {
     if(file !== 'index.js'){
         const model = sequelize.import(path.join(__dirname, file))
+        
         db[model.name] = model;
     }
+    
 });
 
-console.log(db);
 
 
 db.sequelize = sequelize;
