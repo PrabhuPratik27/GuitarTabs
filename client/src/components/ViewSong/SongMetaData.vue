@@ -7,7 +7,7 @@
           <div class="song-artist">{{song.artist}}</div>
           <div class="song-genre">{{song.genre}}</div>
         </v-flex>
-        <v-flex xs2>
+        <v-flex xs2 offset-xs1>
           <img class="albumImage" :src="song.albumImageUrl">
           <div class="song-album">{{song.album}}</div>
         </v-flex>
@@ -23,12 +23,8 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 export default {
-  props: ['song'],
-  components: {
-    Panel
-  }
+  props: ['song']
 }
 </script>
 

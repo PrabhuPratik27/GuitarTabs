@@ -25,7 +25,6 @@
 <script>
 // eslint-disable-next-line
 import SongService from '@/services/SongsService'
-import Panel from '@/components/Panel'
 import SongMetaData from './SongMetaData'
 import YouTube from './YoutubeView'
 import Lyrics from './Lyrics'
@@ -42,7 +41,6 @@ export default {
     this.song = (await SongService.show(songId)).data
   },
   components: {
-    Panel,
     SongMetaData,
     YouTube,
     Lyrics,

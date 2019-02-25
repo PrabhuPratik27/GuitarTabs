@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongService from '@/services/SongsService'
 export default {
   data () {
@@ -48,9 +47,6 @@ export default {
       },
       required: (value) => !!value || 'Required.'
     }
-  },
-  components: {
-    Panel
   },
   methods: {
     async savesong () {
